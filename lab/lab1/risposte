@@ -1,0 +1,45 @@
+Ciao allora stavo guardando il lab di statistica della volta scorsa 
+per l'esercizio dove si deve calcolare la varianza within groups e la varianza between groups io ho fatto così
+
+sum_within = sum((distanza1 - distanza1.mean())**2) + \
+                    sum((distanza0 - distanza0.mean())**2)
+
+all_distance = pd.concat([distanza1, distanza0])
+
+sum_between = len(distanza1) * (distanza1.mean() - all_distance.mean())**2 + \
+                    len(distanza0) * (distanza0.mean() - all_distance.mean())**2
+
+sum_within, sum_between
+
+ma guardando questo link 
+https://www.webtutordimatematica.it/materie/statistica-e-probabilita/statistica-descrittiva/scomposizione-devianza-varianza
+
+ha abbastanza senso onestamente non riesco a capire la divisione /size
+
+per l'esercizio 5.3 ho fatto così
+dataset_rushhour_0['Distance'].sum()/len(dataset_rushhour_0['Distance']), dataset_rushhour_0['Distance'].std() 
+
+facendo come ha fatto lui perchè io non ho usato iloc e loc non lo sapevo avrei fatto  
+print("mean   :",data.loc[data.RushHour == 0,"Distance"].mean())
+print("std dev:",data.loc[data.RushHour == 0,"Distance"].var()**0.5)
+
+il risultato mi viene (13.487428571428573, 5.422596582319328)
+
+
+per il 6.2
+var       = tragitti_brevi.Time.var()
+mean_Time = tragitti_brevi.Time.mean()
+sd_Time   = tragitti_brevi.Time.var()**0.5
+coeff_var = sd_Time/abs(mean_Time)
+
+
+io ho fatto così cercando le formule proprio:
+tragittibrevi = carsharing[carsharing['Distance']<=1.5]
+time=tragittibrevi['Time']
+spazio_tempo= tragittibrevi[['Distance', 'Time']]
+
+time.var()
+time.std()
+spazio_tempo.corr()
+
+poi non ho studiato tanto la teoria, però dagli indici si deduce quello che lui ha scritto
